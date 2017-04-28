@@ -7,11 +7,19 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>Reddit</title>
+	<style>
+		body {
+			background: #242424;
+		}
+		.navbar {
+			border-color: pink;
+		}
+	</style>
 </head>
 
 <body>
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 	    	<div class="navbar-header">
 	    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -20,18 +28,19 @@
 	        	<span class="icon-bar"></span>
 	        	<span class="icon-bar"></span>
 	      		</button>
-	      		<a class="navbar-brand" href="{{action('HomeController@showWelcome')}}">Home</a>
+	      		<a class="navbar-brand" href="#">Home</a>
 	    	</div>
 	
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 	    		<ul class="nav navbar-nav">
 
-	        		<li {!! \Illuminate\Support\Str::endsWith(action('PostsController@index'), Request::path()) ? ' class="active"' : null !!}><a href="{{action('PostsController@index')}}">Posts <span class="sr-only">(current)</span></a></li>
+	        		<li><a href="#">Calendar <span class="sr-only">(current)</span></a></li>
 
-		        	<li {!! \Illuminate\Support\Str::endsWith(action('StudentsController@index'), Request::path()) ? ' class="active"' : null !!} ><a href="{{action('StudentsController@index')}}">Students</a></li>
+		        	<li><a href="#">Events</a></li>
+		        	<li><a href="#">Location</a></li>
 
-<!-- 		        	<li class="dropdown">
+		        	<li class="dropdown">
 		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 
 		          		<ul class="dropdown-menu" role="menu">
@@ -44,7 +53,7 @@
 		            		<li><a href="#">One more separated link</a></li>
 		        		</ul>
 
-		        	</li> -->
+		        	</li>
 
 	      		</ul>
 
@@ -59,7 +68,7 @@
 	      		</form>
 
 	      		<ul class="nav navbar-nav navbar-right">
-	        		<li><a href="#">Link</a></li>
+	        		<li><a href="#">Login</a></li>
 	      		</ul>
 
 	    	</div>
@@ -67,17 +76,11 @@
 	</nav>
 
 	<main class="container">
-    	@if(Session::has('message'))
-    		<div class="alert alert-success">{{ session('successMessage') }}</div>
-    	@endif
-    	@if (Session::has('errorMessage'))
-    		<div class="alert alert-dange">{{ session('errorMessage') }}</div>
-    	@endif
+
     	@yield('content')
 		
 	</main>
-	<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 	<!-- Latest compiled and minified JavaScript -->
